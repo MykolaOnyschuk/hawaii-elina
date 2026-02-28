@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oahu Hawaii - My Guide for You 🌺</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section with Video -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Все для тебя Ванечка и Наденька и Мирославочка</h1>
+            <p class="tagline">Специальный гайд вам :) ✨</p>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Video Introduction Section -->
+    <section class="video-section" id="intro">
+        <div class="container">
+            <div class="section-header">
+                <h2>🎬 Маленькое вступление</h2>
+                <p></p>
+            </div>
+            <div class="video-container">
+                <video controls playsinline>
+                    <source src="privet_compressed.mp4" type="video/quicktime">
+                    <source src="privet_compressed.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">📍 Вот вам карта</span>
+                <h2>Места которые мы посетили и нам понравились </h2>
+                <p>Везде были с детьми к стати :)</p>
+            </div>
+            <div class="map-container">
+                <!-- Oahu Map with Your Saved Places -->
+                <iframe 
+                    src="https://www.google.com/maps/d/embed?mid=1Bic4CnLnkDG5zDWJTYLTi0AG8Amvf5I" 
+                    width="100%" 
+                    height="500" 
+                    style="border:0; border-radius: 24px;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="map-note">
+                    <p>💡 <strong>Pro tip:</strong> <a href="https://maps.app.goo.gl/NusfX5xXM8NqYGbJA" target="_blank">Может с телефона так будет удобнее</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation for Categories -->
+    <nav class="category-nav" id="places">
+        <div class="container">
+            <ul class="nav-pills">
+                <li><a href="#food" class="active">🍜 Food</a></li>
+                <li><a href="#beaches">🏖️ Beaches</a></li>
+                <li><a href="#outdoor">🥾 Outdoor</a></li>
+                <li><a href="#fun">🎡 Fun Places</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Food Section -->
+    <section class="places-section food-section" id="food">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">🍜 Фуд</span>
+                <h2>По еде</h2>
+                <p>Тут мы не эксперты потому как ели дома</p>
+            </div>
+            <div class="places-grid">
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('LandL.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>L&L Hawaiian Barbecue</h3>
+                        <p class="place-description">Типа фаст фуд но не дорогой и гавайский</p>
+                        <a href="https://maps.app.goo.gl/8yEs2JVKopvMSC6WA" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('leonard.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Leonard's Malasadamobile Wagon</h3>
+                        <p class="place-description">Эти траки с пончиками есть по всему острову</p>
+                        <a href="https://maps.app.goo.gl/9HE9uj9agnTdUgJj6" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('shave_ice.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Lin's Hawaiian Snacks</h3>
+                        <p class="place-description">Нам понравился shave ice</p>
+                        <a href="https://maps.app.goo.gl/h1N4mZSFYfinsaxN9" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Beaches Section -->
+
+    <section class="places-section beaches-section" id="beaches">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">🏖️ Beaches</span>
+                <h2>Пляжи</h2>
+                <p>Конечно пляжей много но вот которые нам понравились</p>
+            </div>
+            <div class="places-grid">
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('waikiki.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>📍 Honolulu  Waikiki Beach </h3>
+                        <p class="place-description">The classic! Тут мы не купались, просто прошлись увидеть самый популярный пляж</p>
+                        <a href="https://maps.app.goo.gl/n3Vr9psGzvKA7fgB7" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('koolina.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Koolina</h3>
+                        <p class="place-description">Наш любимый пляж. Там 4 лагуны и все немного отличаются. Если нет мест на парковке, можно на платной стать (оно того стоит)  </p>
+                        <a href="https://maps.app.goo.gl/UJ4L175Sv3QRJfGk9" target="_blank" class="place-link">📍 Open in Maps</a>
+                        <a href="https://maps.app.goo.gl/17Z2BKcU4b35BczB9" target="_blank" class="place-link">📍 Платая парковка</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('hanauma.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Hanauma Bay</h3>
+                        <p class="place-description">Забит туристами и надо записываться заранее. Но для опыта можно сходить.</p>
+                        <a href="https://maps.app.goo.gl/cx17HFsxRz8jdJMd6" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+
+            </div>
+        </div>
+    </section>
+
+ 
+
+    <!-- Outdoor Section -->
+
+
+
+
+    <section class="places-section outdoor-section" id="outdoor">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">🥾 Outdoorа вам немного</span>
+                <h2>Hikes & Nature</h2>
+                <p>Попробую найти легкие варианты</p>
+            </div>
+            <div class="places-grid">
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('koko.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Koko Crater Railway Trailhead</h3>
+                        <p class="place-description">Тут старая железная дорога и она идет по горе до вершины. Даже если вы поднимитесь на 5-10 метров, уже будет хороший вид</p>
+                        <a href="https://maps.app.goo.gl/hsKN1R8wVSMd4g848" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('kaiwi.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Kaiwi State Scenic Shoreline</h3>
+                        <p class="place-description">Афальтированный трейл. Но надо минут 15 проти до крпсивого вида. Там с коляской идти можно без проблем</p>
+                        <a href="https://maps.app.goo.gl/LPiPFx9GKECbjvTf9" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('diamont.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Diamond Head State Monument</h3>
+                        <p class="place-description">Самый популярный хайк. Парковка платная и идти наверное будет немного сложно с маленьким ребенком. Просто добавил сюда что бы было понятно что этот хайк тоже есть</p>
+                        <a href="https://maps.app.goo.gl/oJz7VYWtJPqZWJxeA" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Fun Places Section -->
+
+    <section class="places-section fun-section" id="fun">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">🎡 Fun Places</span>
+                <h2>Можно проехать или пройтись</h2>
+                <p>Конечно там много разных мест но вот некоторые из них</p>
+            </div>
+            <div class="places-grid">
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('temple.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Valley of the Temples Memorial Park, Cemetery, Cremation, Funeral</h3>
+                        <p class="place-description">Очень красивый парк и много разных храмов</p>
+                        <a href="https://maps.app.goo.gl/ffbXtstRzNgheZrR6" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('botanical.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Ho'omaluhia Botanical Garden Visitor Center</h3>
+                        <p class="place-description">Ботанический сад (бесплатный) с нескольктми уровнями. Лутший вид если заехать на самый верх</p>
+                        <a href="https://maps.app.goo.gl/SYkPaSDp4DAzFvv4A" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('king.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Down TownKing Kamehameha</h3>
+                        <p class="place-description">Красивый даутбоун в центре города</p>
+                        <a href="https://maps.app.goo.gl/vcvKN5YWsQaqggLCA" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('dole.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Wahiawā Botanical Garden</h3>
+                        <p class="place-description">Ферма ананасов. Много людей но заехать можно</p>
+                        <a href="https://maps.app.goo.gl/4PbzuXfTcdfAmF9e9" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('makadamia.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Tropical Farms Macadamia Nuts</h3>
+                        <p class="place-description">Можно попробовать макадамские орехи. Это быстрая остановка, чисто увидеть как они растут</p>
+                        <a href="https://maps.app.goo.gl/wS5D1s4HFVxLC7bF8" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+
+                <article class="place-card">
+                    <div class="place-image" style="background-image: url('waterfall.png')">
+                    </div>
+                    <div class="place-content">
+                        <h3>Waimea Botanical Garden</h3>
+                        <p class="place-description">Ботанический сад (платный но купание под водопадом входит в цену). Идти до водопада надо минут 20 но та дают желет и ты плаваешь под водопадом</p>
+                        <a href="https://maps.app.goo.gl/iR1hsqsAx6SwUqmx7" target="_blank" class="place-link">📍 Open in Maps</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>🌺</span>
+                    <h3>Смотрите карту, там больше мест.</h3>
+                </div>
+                <p>Made with aloha for Ромашкаs ✨</p>
+                <p class="footer-note"></p>
+            </div>
+        </div>
+        <div class="wave-divider wave-top">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+            </svg>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
