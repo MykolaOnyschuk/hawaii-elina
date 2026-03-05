@@ -435,6 +435,47 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--emerald); }
 
         ::selection { background: var(--emerald); color: var(--night-deep); }
+
+        /* ===== TOP NAV (matching v3/v4) ===== */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11,20,38,0.9);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .top-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            list-style: none;
+            padding: 10px 16px;
+            flex-wrap: wrap;
+        }
+
+        .top-nav a {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 100px;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .top-nav a:hover,
+        .top-nav a.active {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--ocean) 100%);
+            box-shadow: 0 6px 20px rgba(52,211,153,0.08);
+        }
+
+        /* navigation buttons removed */
     </style>
 </head>
 <body>
@@ -460,6 +501,17 @@
             </div>
         </div>
     </header>
+
+    <!-- Top Navigation (matching v3/v4) -->
+    <nav class="top-nav" id="topnav">
+        <ul>
+            <li><a href="#map" class="active">📍 Карта</a></li>
+            <li><a href="#food">🍜 Еда</a></li>
+            <li><a href="#beaches">🏖️ Пляжи</a></li>
+            <li><a href="#outdoor">🥾 Хайки</a></li>
+            <li><a href="#fun">🎡 Места</a></li>
+        </ul>
+    </nav>
 
     <!-- Video Intro removed per request -->
 
@@ -701,6 +753,8 @@
         </div>
     </section>
 
+    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-icon">🌺</div>
@@ -759,5 +813,7 @@
             });
         });
     </script>
+
+    <!-- navigation buttons script removed -->
 </body>
 </html>
