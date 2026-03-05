@@ -6,320 +6,758 @@
     <title>Oahu Hawaii - My Guide for You 🌺</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           V2 - TROPICAL NIGHT EDITORIAL
+           ============================================ */
+        :root {
+            --night-deep: #0B1426;
+            --night-mid: #132040;
+            --night-card: #1A2A4A;
+            --emerald: #34D399;
+            --emerald-dim: #065F46;
+            --gold: #FBBF24;
+            --coral-soft: #FB7185;
+            --text-bright: #F1F5F9;
+            --text-muted: #94A3B8;
+            --text-dim: #64748B;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--night-deep);
+            color: var(--text-bright);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 80px 40px;
+            background:
+                linear-gradient(180deg, transparent 0%, rgba(11,20,38,0.6) 40%, var(--night-deep) 100%),
+                linear-gradient(135deg, rgba(52,211,153,0.15) 0%, rgba(251,113,133,0.1) 100%),
+                url('https://images.unsplash.com/photo-1507876466758-bc54f384809c?w=1600') center/cover no-repeat;
+        }
+
+        .hero-inner {
+            max-width: 800px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--emerald);
+            border: 1px solid var(--emerald);
+            padding: 6px 16px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-bright) 0%, var(--emerald) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 32px;
+        }
+
+        .scroll-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint span {
+            display: inline-block;
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--text-dim);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-hint span::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--emerald);
+            border-radius: 2px;
+            animation: scrollDot 2s infinite;
+        }
+
+        /* ---- FLOATING NAV ---- */
+        .side-nav {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .side-nav a {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 2px solid var(--text-dim);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .side-nav a:hover,
+        .side-nav a.active {
+            background: var(--emerald);
+            border-color: var(--emerald);
+            transform: scale(1.3);
+        }
+
+        .side-nav a::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .side-nav a:hover::after {
+            opacity: 1;
+        }
+
+        /* ---- SECTIONS ---- */
+        .section {
+            padding: 100px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .section-divider .num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--emerald);
+            line-height: 1;
+        }
+
+        .section-divider .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--glass-border) 0%, transparent 100%);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 48px;
+        }
+
+        /* ---- VIDEO ---- */
+        .video-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+        }
+
+        .video-wrap video {
+            width: 100%;
+            display: block;
+        }
+
+        /* ---- MAP ---- */
+        .map-wrap {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+        }
+
+        .map-wrap iframe {
+            display: block;
+        }
+
+        .map-tip {
+            text-align: center;
+            padding: 16px;
+            background: var(--night-card);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .map-tip a {
+            color: var(--emerald);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .map-tip a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- PLACE CARDS - HORIZONTAL ---- */
+        .places-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .h-card {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            background: var(--night-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s ease;
+        }
+
+        .h-card:hover {
+            border-color: var(--emerald);
+            transform: translateX(8px);
+            box-shadow: -8px 8px 40px rgba(52,211,153,0.08);
+        }
+
+        .h-card-img {
+            height: 100%;
+            min-height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .h-card-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 60%, var(--night-card) 100%);
+        }
+
+        .h-card-body {
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .h-card-body h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .h-card-body p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .links-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--night-deep);
+            background: var(--emerald);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .map-btn:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .map-btn.secondary {
+            background: transparent;
+            color: var(--emerald);
+            border: 1px solid var(--emerald);
+        }
+
+        .map-btn.secondary:hover {
+            background: var(--emerald);
+            color: var(--night-deep);
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            text-align: center;
+            padding: 80px 40px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .footer h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .footer p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* ---- ANIMATIONS ---- */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        @keyframes scrollDot {
+            0%, 100% { opacity: 1; top: 8px; }
+            50% { opacity: 0.3; top: 20px; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 24px; min-height: 80vh; }
+            .section { padding: 60px 24px; }
+            .side-nav { display: none; }
+
+            .h-card {
+                grid-template-columns: 1fr;
+            }
+
+            .h-card-img {
+                height: 180px;
+            }
+
+            .h-card-img::after {
+                background: linear-gradient(180deg, transparent 60%, var(--night-card) 100%);
+            }
+
+            .h-card-body { padding: 20px 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .h-card-body h3 { font-size: 1.1rem; }
+            .hero h1 { font-size: 2rem; }
+        }
+
+        /* ---- SCROLLBAR ---- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--night-deep); }
+        ::-webkit-scrollbar-thumb {
+            background: var(--night-card);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--emerald); }
+
+        ::selection { background: var(--emerald); color: var(--night-deep); }
+    </style>
 </head>
 <body>
-    <!-- Hero Section with Video -->
+
+    <!-- Side Navigation -->
+    <nav class="side-nav" id="sidenav">
+        <a href="#intro" data-label="Intro" class="active"></a>
+        <a href="#map" data-label="Map"></a>
+        <a href="#food" data-label="Food"></a>
+        <a href="#beaches" data-label="Beaches"></a>
+        <a href="#outdoor" data-label="Outdoor"></a>
+        <a href="#fun" data-label="Fun Places"></a>
+    </nav>
+
+    <!-- Hero -->
     <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Все для тебя Ванечка и Наденька и Мирославочка</h1>
-            <p class="tagline">Специальный гайд вам :) ✨</p>
-        </div>
-        <div class="wave-divider">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-            </svg>
+        <div class="hero-inner">
+            <div class="hero-label">Oahu, Hawaii</div>
+            <h1>Все для вас Элина, Итер и Реган</h1>
+            <p class="hero-sub">Специальный гайд вам :) ✨</p>
+            <div class="scroll-hint">
+                <span></span> Scroll to explore
+            </div>
         </div>
     </header>
 
-    <!-- Video Introduction Section -->
-    <section class="video-section" id="intro">
-        <div class="container">
-            <div class="section-header">
-                <h2>🎬 Маленькое вступление</h2>
-                <p></p>
-            </div>
-            <div class="video-container">
-                <video controls playsinline>
-                    <source src="privet_compressed.mp4" type="video/quicktime">
-                    <source src="privet_compressed.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+    <!-- Video Intro removed per request -->
+
+    <!-- Map -->
+    <section class="section" id="map">
+        <div class="section-divider">
+            <div class="num"></div>
+            <div class="line"></div>
+        </div>
+        <h2 class="section-title">Места которые мы посетили и нам понравились</h2>
+        <p class="section-subtitle">📍 Везде были с детьми к стати :)</p>
+        <div class="map-wrap fade-in">
+            <iframe
+                src="https://www.google.com/maps/d/embed?mid=1Bic4CnLnkDG5zDWJTYLTi0AG8Amvf5I"
+                width="100%"
+                height="500"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="map-tip">
+                💡 <strong>Pro tip:</strong> <a href="https://maps.app.goo.gl/NusfX5xXM8NqYGbJA" target="_blank">Может с телефона так будет удобнее</a>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-section" id="map">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">📍 Вот вам карта</span>
-                <h2>Места которые мы посетили и нам понравились </h2>
-                <p>Везде были с детьми к стати :)</p>
-            </div>
-            <div class="map-container">
-                <!-- Oahu Map with Your Saved Places -->
-                <iframe 
-                    src="https://www.google.com/maps/d/embed?mid=1Bic4CnLnkDG5zDWJTYLTi0AG8Amvf5I" 
-                    width="100%" 
-                    height="500" 
-                    style="border:0; border-radius: 24px;" 
-                    allowfullscreen="" 
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-                <div class="map-note">
-                    <p>💡 <strong>Pro tip:</strong> <a href="https://maps.app.goo.gl/NusfX5xXM8NqYGbJA" target="_blank">Может с телефона так будет удобнее</a></p>
+    <!-- Food -->
+    <section class="section" id="food">
+        <div class="section-divider">
+            <div class="num"></div>
+            <div class="line"></div>
+        </div>
+        <h2 class="section-title">По еде</h2>
+        <p class="section-subtitle">🍜 Тут мы не эксперты потому как ели дома</p>
+
+        <div class="places-list">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('LandL.png')"></div>
+                <div class="h-card-body">
+                    <h3>L&L Hawaiian Barbecue</h3>
+                    <p>Типа фаст фуд но не дорогой и гавайский</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/8yEs2JVKopvMSC6WA" target="_blank" class="map-btn">📍 Open in Maps</a>
+                    </div>
                 </div>
-            </div>
+            </article>
+
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('leonard.png')"></div>
+                <div class="h-card-body">
+                    <h3>Leonard's Malasadamobile Wagon</h3>
+                    <p>Эти траки с пончиками есть по всему острову</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/9HE9uj9agnTdUgJj6" target="_blank" class="map-btn">📍 Open in Maps</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('shave_ice.png')"></div>
+                <div class="h-card-body">
+                    <h3>Lin's Hawaiian Snacks</h3>
+                    <p>Нам понравился shave ice</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/h1N4mZSFYfinsaxN9" target="_blank" class="map-btn">📍 Open in Maps</a>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
 
-    <!-- Navigation for Categories -->
-    <nav class="category-nav" id="places">
-        <div class="container">
-            <ul class="nav-pills">
-                <li><a href="#food" class="active">🍜 Food</a></li>
-                <li><a href="#beaches">🏖️ Beaches</a></li>
-                <li><a href="#outdoor">🥾 Outdoor</a></li>
-                <li><a href="#fun">🎡 Fun Places</a></li>
-            </ul>
+    <!-- Beaches -->
+    <section class="section" id="beaches">
+        <div class="section-divider">
+            <div class="num"></div>
+            <div class="line"></div>
         </div>
-    </nav>
+        <h2 class="section-title">Пляжи</h2>
+        <p class="section-subtitle">🏖️ Конечно пляжей много но вот которые нам понравились</p>
 
-    <!-- Food Section -->
-    <section class="places-section food-section" id="food">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">🍜 Фуд</span>
-                <h2>По еде</h2>
-                <p>Тут мы не эксперты потому как ели дома</p>
-            </div>
-            <div class="places-grid">
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('LandL.png')">
+        <div class="places-list">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('waikiki.png')"></div>
+                <div class="h-card-body">
+                    <h3>Honolulu Waikiki Beach</h3>
+                    <p>The classic! Тут мы не купались, просто прошлись увидеть самый популярный пляж</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/n3Vr9psGzvKA7fgB7" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>L&L Hawaiian Barbecue</h3>
-                        <p class="place-description">Типа фаст фуд но не дорогой и гавайский</p>
-                        <a href="https://maps.app.goo.gl/8yEs2JVKopvMSC6WA" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('leonard.png')">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('koolina.png')"></div>
+                <div class="h-card-body">
+                    <h3>Koolina</h3>
+                    <p>Наш любимый пляж. Там 4 лагуны и все немного отличаются. Если нет мест на парковке, можно на платной стать (оно того стоит)</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/UJ4L175Sv3QRJfGk9" target="_blank" class="map-btn">📍 Open in Maps</a>
+                        <a href="https://maps.app.goo.gl/17Z2BKcU4b35BczB9" target="_blank" class="map-btn secondary">📍 Платная парковка</a>
                     </div>
-                    <div class="place-content">
-                        <h3>Leonard's Malasadamobile Wagon</h3>
-                        <p class="place-description">Эти траки с пончиками есть по всему острову</p>
-                        <a href="https://maps.app.goo.gl/9HE9uj9agnTdUgJj6" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('shave_ice.png')">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('hanauma.png')"></div>
+                <div class="h-card-body">
+                    <h3>Hanauma Bay</h3>
+                    <p>Забит туристами и надо записываться заранее. Но для опыта можно сходить.</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/cx17HFsxRz8jdJMd6" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>Lin's Hawaiian Snacks</h3>
-                        <p class="place-description">Нам понравился shave ice</p>
-                        <a href="https://maps.app.goo.gl/h1N4mZSFYfinsaxN9" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-
-
-            </div>
+                </div>
+            </article>
         </div>
     </section>
 
-    <!-- Beaches Section -->
+    <!-- Outdoor -->
+    <section class="section" id="outdoor">
+        <div class="section-divider">
+            <div class="num"></div>
+            <div class="line"></div>
+        </div>
+        <h2 class="section-title">Hikes & Nature</h2>
+        <p class="section-subtitle">🥾 Попробую найти легкие варианты</p>
 
-    <section class="places-section beaches-section" id="beaches">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">🏖️ Beaches</span>
-                <h2>Пляжи</h2>
-                <p>Конечно пляжей много но вот которые нам понравились</p>
-            </div>
-            <div class="places-grid">
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('waikiki.png')">
+        <div class="places-list">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('koko.png')"></div>
+                <div class="h-card-body">
+                    <h3>Koko Crater Railway Trailhead</h3>
+                    <p>Тут старая железная дорога и она идет по горе до вершины. Даже если вы поднимитесь на 5-10 метров, уже будет хороший вид</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/hsKN1R8wVSMd4g848" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>📍 Honolulu  Waikiki Beach </h3>
-                        <p class="place-description">The classic! Тут мы не купались, просто прошлись увидеть самый популярный пляж</p>
-                        <a href="https://maps.app.goo.gl/n3Vr9psGzvKA7fgB7" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('koolina.png')">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('kaiwi.png')"></div>
+                <div class="h-card-body">
+                    <h3>Kaiwi State Scenic Shoreline</h3>
+                    <p>Асфальтированный трейл. Но надо минут 15 пройти до красивого вида. Там с коляской идти можно без проблем</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/LPiPFx9GKECbjvTf9" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>Koolina</h3>
-                        <p class="place-description">Наш любимый пляж. Там 4 лагуны и все немного отличаются. Если нет мест на парковке, можно на платной стать (оно того стоит)  </p>
-                        <a href="https://maps.app.goo.gl/UJ4L175Sv3QRJfGk9" target="_blank" class="place-link">📍 Open in Maps</a>
-                        <a href="https://maps.app.goo.gl/17Z2BKcU4b35BczB9" target="_blank" class="place-link">📍 Платая парковка</a>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('hanauma.png')">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('diamont.png')"></div>
+                <div class="h-card-body">
+                    <h3>Diamond Head State Monument</h3>
+                    <p>Самый популярный хайк. Парковка платная и идти наверное будет немного сложно с маленьким ребенком. Просто добавил сюда что бы было понятно что этот хайк тоже есть</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/oJz7VYWtJPqZWJxeA" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>Hanauma Bay</h3>
-                        <p class="place-description">Забит туристами и надо записываться заранее. Но для опыта можно сходить.</p>
-                        <a href="https://maps.app.goo.gl/cx17HFsxRz8jdJMd6" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-
-
-            </div>
+                </div>
+            </article>
         </div>
     </section>
 
- 
+    <!-- Fun Places -->
+    <section class="section" id="fun">
+        <div class="section-divider">
+            <div class="num"></div>
+            <div class="line"></div>
+        </div>
+        <h2 class="section-title">Можно проехать или пройтись</h2>
+        <p class="section-subtitle">🎡 Конечно там много разных мест но вот некоторые из них</p>
 
-    <!-- Outdoor Section -->
-
-
-
-
-    <section class="places-section outdoor-section" id="outdoor">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">🥾 Outdoorа вам немного</span>
-                <h2>Hikes & Nature</h2>
-                <p>Попробую найти легкие варианты</p>
-            </div>
-            <div class="places-grid">
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('koko.png')">
+        <div class="places-list">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('temple.png')"></div>
+                <div class="h-card-body">
+                    <h3>Valley of the Temples Memorial Park</h3>
+                    <p>Очень красивый парк и много разных храмов</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/ffbXtstRzNgheZrR6" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>Koko Crater Railway Trailhead</h3>
-                        <p class="place-description">Тут старая железная дорога и она идет по горе до вершины. Даже если вы поднимитесь на 5-10 метров, уже будет хороший вид</p>
-                        <a href="https://maps.app.goo.gl/hsKN1R8wVSMd4g848" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('kaiwi.png')">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('botanical.png')"></div>
+                <div class="h-card-body">
+                    <h3>Ho'omaluhia Botanical Garden</h3>
+                    <p>Ботанический сад (бесплатный) с несколькими уровнями. Лучший вид если заехать на самый верх</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/SYkPaSDp4DAzFvv4A" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>Kaiwi State Scenic Shoreline</h3>
-                        <p class="place-description">Афальтированный трейл. Но надо минут 15 проти до крпсивого вида. Там с коляской идти можно без проблем</p>
-                        <a href="https://maps.app.goo.gl/LPiPFx9GKECbjvTf9" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('diamont.png')">
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('king.png')"></div>
+                <div class="h-card-body">
+                    <h3>Down Town King Kamehameha</h3>
+                    <p>Красивый даунтаун в центре города</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/vcvKN5YWsQaqggLCA" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                    <div class="place-content">
-                        <h3>Diamond Head State Monument</h3>
-                        <p class="place-description">Самый популярный хайк. Парковка платная и идти наверное будет немного сложно с маленьким ребенком. Просто добавил сюда что бы было понятно что этот хайк тоже есть</p>
-                        <a href="https://maps.app.goo.gl/oJz7VYWtJPqZWJxeA" target="_blank" class="place-link">📍 Open in Maps</a>
+                </div>
+            </article>
+
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('dole.png')"></div>
+                <div class="h-card-body">
+                    <h3>Wahiawa Botanical Garden</h3>
+                    <p>Ферма ананасов. Много людей но заехать можно</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/4PbzuXfTcdfAmF9e9" target="_blank" class="map-btn">📍 Open in Maps</a>
                     </div>
-                </article>
-            </div>
+                </div>
+            </article>
+
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('makadamia.png')"></div>
+                <div class="h-card-body">
+                    <h3>Tropical Farms Macadamia Nuts</h3>
+                    <p>Можно попробовать макадамские орехи. Это быстрая остановка, чисто увидеть как они растут</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/wS5D1s4HFVxLC7bF8" target="_blank" class="map-btn">📍 Open in Maps</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="h-card fade-in">
+                <div class="h-card-img" style="background-image: url('waterfall.png')"></div>
+                <div class="h-card-body">
+                    <h3>Waimea Botanical Garden</h3>
+                    <p>Ботанический сад (платный но купание под водопадом входит в цену). Идти до водопада надо минут 20 но там дают жилет и ты плаваешь под водопадом</p>
+                    <div class="links-row">
+                        <a href="https://maps.app.goo.gl/iR1hsqsAx6SwUqmx7" target="_blank" class="map-btn">📍 Open in Maps</a>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
-
-
-
-    <!-- Fun Places Section -->
-
-    <section class="places-section fun-section" id="fun">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">🎡 Fun Places</span>
-                <h2>Можно проехать или пройтись</h2>
-                <p>Конечно там много разных мест но вот некоторые из них</p>
-            </div>
-            <div class="places-grid">
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('temple.png')">
-                    </div>
-                    <div class="place-content">
-                        <h3>Valley of the Temples Memorial Park, Cemetery, Cremation, Funeral</h3>
-                        <p class="place-description">Очень красивый парк и много разных храмов</p>
-                        <a href="https://maps.app.goo.gl/ffbXtstRzNgheZrR6" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-
-
-
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('botanical.png')">
-                    </div>
-                    <div class="place-content">
-                        <h3>Ho'omaluhia Botanical Garden Visitor Center</h3>
-                        <p class="place-description">Ботанический сад (бесплатный) с нескольктми уровнями. Лутший вид если заехать на самый верх</p>
-                        <a href="https://maps.app.goo.gl/SYkPaSDp4DAzFvv4A" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('king.png')">
-                    </div>
-                    <div class="place-content">
-                        <h3>Down TownKing Kamehameha</h3>
-                        <p class="place-description">Красивый даутбоун в центре города</p>
-                        <a href="https://maps.app.goo.gl/vcvKN5YWsQaqggLCA" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('dole.png')">
-                    </div>
-                    <div class="place-content">
-                        <h3>Wahiawā Botanical Garden</h3>
-                        <p class="place-description">Ферма ананасов. Много людей но заехать можно</p>
-                        <a href="https://maps.app.goo.gl/4PbzuXfTcdfAmF9e9" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('makadamia.png')">
-                    </div>
-                    <div class="place-content">
-                        <h3>Tropical Farms Macadamia Nuts</h3>
-                        <p class="place-description">Можно попробовать макадамские орехи. Это быстрая остановка, чисто увидеть как они растут</p>
-                        <a href="https://maps.app.goo.gl/wS5D1s4HFVxLC7bF8" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-
-                <article class="place-card">
-                    <div class="place-image" style="background-image: url('waterfall.png')">
-                    </div>
-                    <div class="place-content">
-                        <h3>Waimea Botanical Garden</h3>
-                        <p class="place-description">Ботанический сад (платный но купание под водопадом входит в цену). Идти до водопада надо минут 20 но та дают желет и ты плаваешь под водопадом</p>
-                        <a href="https://maps.app.goo.gl/iR1hsqsAx6SwUqmx7" target="_blank" class="place-link">📍 Open in Maps</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-
-
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span>🌺</span>
-                    <h3>Смотрите карту, там больше мест.</h3>
-                </div>
-                <p>Made with aloha for Ромашкаs ✨</p>
-                <p class="footer-note"></p>
-            </div>
-        </div>
-        <div class="wave-divider wave-top">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-            </svg>
-        </div>
+        <div class="footer-icon">🌺</div>
+        <h3>Смотрите карту, там больше мест.</h3>
+        <p>Made with aloha for Мендозас ✨</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for fade-in
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // Side nav active state on scroll
+            const navLinks = document.querySelectorAll('.side-nav a');
+            const sections = document.querySelectorAll('.section');
+
+            function updateNav() {
+                const scrollY = window.scrollY + window.innerHeight / 3;
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const bottom = top + section.offsetHeight;
+                    const id = section.getAttribute('id');
+                    if (scrollY >= top && scrollY < bottom) {
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => { updateNav(); ticking = false; });
+                    ticking = true;
+                }
+            });
+
+            // Smooth scroll for side nav
+            navLinks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
